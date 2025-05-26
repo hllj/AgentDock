@@ -16,4 +16,5 @@ export {
 } from './factory';
 
 // Export providers
-export { MemoryStorageProvider } from './providers/memory-provider'; 
+export { MemoryStorageProvider } from './providers/memory-provider';
+export { SQLiteStorageProvider } from './providers/sqlite-provider'; 

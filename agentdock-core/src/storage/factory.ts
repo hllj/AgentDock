@@ -14,6 +14,7 @@ import {
 import { 
   MemoryStorageProvider,
   RedisStorageProvider,
+  SQLiteStorageProvider,
   VercelKVProvider
 } from './providers';
 
@@ -61,6 +62,14 @@ export class StorageFactory {
         namespace: options.namespace || 'default',
         url,
         token: process.env.REDIS_TOKEN || 'placeholder_token' // Required by @upstash/redis
+      });
+    });
+
+    this.registerProvider('sqlite', (options = {}) => {
+      return new SQLiteStorageProvider({
+        namespace: options.namespace || 'agentdock',
+        dbPath: process.env.SQLITE_PATH,
+        ...options
       });
     });
 
